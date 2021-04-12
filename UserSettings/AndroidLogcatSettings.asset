@@ -31,6 +31,18 @@
             "name": "com.sec.android.app.launcher",
             "processId": 10642,
             "exited": false
+        },
+        {
+            "deviceId": "R58M97N9X4F",
+            "name": "com.com.ducky.MarbleAdventure",
+            "processId": 13866,
+            "exited": true
+        },
+        {
+            "deviceId": "R58M97N9X4F",
+            "name": "com.com.ducky.MarbleAdventure",
+            "processId": 14897,
+            "exited": true
         }
     ],
     "m_Tags": {

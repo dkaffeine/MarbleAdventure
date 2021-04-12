@@ -28,7 +28,7 @@ public class OptionsHandler : MonoBehaviour
     /// <summary>
     /// Get the file name to save / load options
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Gives the options file name</returns>
     public static string GetFileName()
     {
         return Application.persistentDataPath + "/options.save";
