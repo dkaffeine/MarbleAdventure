@@ -1,0 +1,89 @@
+{
+    "m_SelectedDeviceId": "R58M97N9X4F",
+    "m_SelectedPackage": {
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
+        "exited": false
+    },
+    "m_SelectedPriority": 0,
+    "m_KnownPackagesForSerialization": [
+        {
+            "deviceId": "R58M97N9X4F",
+            "name": "com.com.ducky.MarbleAdventure",
+            "processId": 1907,
+            "exited": true
+        },
+        {
+            "deviceId": "R58M97N9X4F",
+            "name": "com.com.ducky.MarbleAdventure",
+            "processId": 5825,
+            "exited": true
+        },
+        {
+            "deviceId": "R58M97N9X4F",
+            "name": "com.com.ducky.MarbleAdventure",
+            "processId": 10889,
+            "exited": true
+        },
+        {
+            "deviceId": "R58M97N9X4F",
+            "name": "com.sec.android.app.launcher",
+            "processId": 10642,
+            "exited": false
+        }
+    ],
+    "m_Tags": {
+        "m_Entries": [
+            {
+                "m_Name": "Filter by all listed tags",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "No Filter",
+                "m_Selected": true
+            },
+            {
+                "m_Name": "",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "Tag Control...",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "Unity",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "CRASH",
+                "m_Selected": false
+            }
+        ]
+    },
+    "m_MemoryViewerState": {
+        "MemoryWindowHeight": 300.0,
+        "MemoryWindowWidth": 170.0,
+        "MemoryTypeEnabled": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "MemoryGroup": 2,
+        "Behavior": 0
+    },
+    "m_Filter": "",
+    "m_FilterIsRegularExpression": false,
+    "m_SymbolPaths": []
+}
