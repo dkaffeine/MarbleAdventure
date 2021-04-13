@@ -20,6 +20,11 @@ public class GameEngine : MonoBehaviour
     /// </summary>
     private static Data.LevelInformation levelInformation;
 
+    /// <summary>
+    /// Handler to UI
+    /// </summary>
+    public UIManagement uIManagement;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -103,6 +108,10 @@ public class GameEngine : MonoBehaviour
             levelInformation.isLifeLost = false;
             Utils.ExtraSceneManagement.Load(levelInformation.levelName);
         }
+
+        // We display lives
+
+        uIManagement.DisplayLives();
     }
 
     /// <summary>
@@ -113,6 +122,11 @@ public class GameEngine : MonoBehaviour
         // TODO: destroy the player if that player is present
 
         Utils.ExtraSceneManagement.Unload(levelInformation.levelName);
+
+        // We remove lives displayed
+
+        uIManagement.RemoveLivesDisplayed();
+
     }
 
     /// <summary>
@@ -127,6 +141,34 @@ public class GameEngine : MonoBehaviour
         LoadLevel();
     }
     
+    public void LifeLost()
+    {
+        adventureData.lives--;
+
+        if (adventureData.lives != 0)
+        {
+            StartCoroutine(LoadNewLevel());
+        }
+        else
+        {
+            GameOver();
+        }
+    }
+
+    public void GameOver()
+    {
+        UnloadLevel();
+
+        ResetGame();
+
+        // TODO : game over display with choice
+    }
+
+    public void ResetGame()
+    {
+        adventureData.lives = adventureData.livesMax;
+        adventureData.level = 1;
+    }
 
     #endregion
 

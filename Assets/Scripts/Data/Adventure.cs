@@ -10,5 +10,6 @@ namespace Data
         public uint level = 1;
         public uint lives = 3;
         public uint livesMax = 3;
+        public long money = 0;
     }
 }
