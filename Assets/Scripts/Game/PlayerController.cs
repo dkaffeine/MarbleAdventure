@@ -66,15 +66,39 @@ public class PlayerController : MonoBehaviour
             GameEngine.levelInformation.isGameOnPause = !GameEngine.levelInformation.isGameOnPause;
         }
         
-        if (GameEngine.levelInformation.isGameOnPause == true)
+        if (GameEngine.levelInformation.isGameOnPause == false)
         { 
-            // Update forward / backward force, depending on the vertical input
-            float forwardInput = gameController.GetVerticalAxis();
-            playerRigidbody.AddForce(focalPoint.transform.forward * GameEngine.adventureData.speed * forwardInput);
+
+            // Horizontal displacement allowed only if the player is touching the ground
+            if (isOnGround)
+            {
+                // Update forward / backward force, depending on the vertical input
+                float forwardInput = gameController.GetVerticalAxis();
+                playerRigidbody.AddForce(focalPoint.transform.forward * GameEngine.adventureData.speed * forwardInput);
+
+            }
 
             // Update left / right, depending on the horizontal input
             float horizontalAxis = gameController.GetHorizontalAxis();
             focalPoint.transform.Rotate(focalPoint.transform.up, horizontalAxis * Time.deltaTime * 90.0f);
+
+            bool spacePressed = gameController.GetJump();
+            if (spacePressed)
+            {
+                if (isOnGround)
+                {
+                    isOnGround = false;
+
+                    playerRigidbody.AddForce(focalPoint.transform.up * 10.0f, ForceMode.Impulse);
+                }
+                else if (canDoubleJump)
+                {
+                    canDoubleJump = false;
+                    // TODO : the double jump action depends on the powerup equipped
+                }
+
+
+            }
 
             // Update focal point position on player position
             focalPoint.transform.position = GetGroundPosition();

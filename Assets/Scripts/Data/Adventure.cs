@@ -11,5 +11,6 @@ namespace Data
         public uint lives = 3;
         public uint livesMax = 3;
         public long money = 0;
+        public PowerupType powerup = PowerupType.None;
     }
 }
