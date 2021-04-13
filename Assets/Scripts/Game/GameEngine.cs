@@ -1,9 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameEngine : MonoBehaviour
 {
+    /// <summary>
+    /// Main menu scene name
+    /// </summary>
+    private const string mainMenuSceneName = "MainMenu";
 
     /// <summary>
     /// Static reference handler to adventure data
@@ -25,6 +31,12 @@ public class GameEngine : MonoBehaviour
     /// </summary>
     public UIManagement uIManagement;
 
+    /// <summary>
+    /// Internal pause state
+    /// </summary>
+    private bool pauseInternalState = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +44,47 @@ public class GameEngine : MonoBehaviour
 
         LoadLevel();
     }
+
+    private void FixedUpdate()
+    {
+        // Check the life lost information
+        if (levelInformation.isLifeLost == true)
+        {
+            levelInformation.isLifeLost = false;
+
+            LifeLost();
+        }
+
+        // Check if the level is ended
+        if (levelInformation.isLevelEndReached == true)
+        {
+            levelInformation.isLevelEndReached = false;
+
+            StartCoroutine(LoadNewLevel());
+        }
+
+        CheckPause();
+
+    }
+
+    /// <summary>
+    /// Check the pause information
+    /// </summary>
+    private void CheckPause()
+    {
+
+        // If pause internal state did not change, return;
+        if (pauseInternalState == levelInformation.isGameOnPause)
+        {
+            return;
+        }
+
+        // Sets the time scaling, depending on
+        Time.timeScale = levelInformation.isGameOnPause ? 0.0f : 1.0f;
+
+        pauseInternalState = levelInformation.isGameOnPause;
+    }
+
 
     #region Save / load management system
 
@@ -79,6 +132,35 @@ public class GameEngine : MonoBehaviour
         Utils.FileManagement.SaveData(adventureData, fileName);
     }
 
+    /// <summary>
+    /// Auto-save game at regular interval
+    /// </summary>
+    /// <returns>Returns an iterator </returns>
+    public static IEnumerator AutoSaveAdventure()
+    {
+        float timeSaveInterval = 60.0f;
+
+        levelInformation.autoSave = true;
+
+        while(levelInformation.autoSave == true)
+        {
+            yield return new WaitForSeconds(timeSaveInterval);
+
+            SaveAdventure();
+        }
+    }
+
+    public static void ReturnToGameTitle()
+    {
+        // Stops the autosave coroutine
+        levelInformation.autoSave = false;
+
+        // Save adventure
+        SaveAdventure();
+
+        // Return to game title
+        SceneManager.LoadScene(mainMenuSceneName, LoadSceneMode.Single);
+    }
 
     #endregion
 
@@ -141,6 +223,9 @@ public class GameEngine : MonoBehaviour
         LoadLevel();
     }
     
+    /// <summary>
+    /// Function called when a life is lost
+    /// </summary>
     public void LifeLost()
     {
         adventureData.lives--;
@@ -169,6 +254,8 @@ public class GameEngine : MonoBehaviour
         adventureData.lives = adventureData.livesMax;
         adventureData.level = 1;
     }
+
+
 
     #endregion
 

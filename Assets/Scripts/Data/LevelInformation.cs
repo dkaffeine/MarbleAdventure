@@ -10,6 +10,7 @@ namespace Data
         public bool isLevelEndReached = false;
         public bool isLifeLost = false;
         public bool isGameOnPause = false;
+        public bool autoSave = false;
         public string levelName = "Level 1";
     }
 }
