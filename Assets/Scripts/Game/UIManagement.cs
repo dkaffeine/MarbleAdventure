@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,6 +29,10 @@ public class UIManagement : MonoBehaviour
     /// </summary>
     public Canvas canvas;
 
+    /// <summary>
+    /// Handler to the pause panel
+    /// </summary>
+    public GameObject pausePanel;
 
     /// <summary>
     /// Removes lives displayed

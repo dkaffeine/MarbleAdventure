@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,7 +22,7 @@ public class GameEngine : MonoBehaviour
     /// <summary>
     /// Handler to the level structure
     /// </summary>
-    private static Data.LevelInformation levelInformation;
+    public static Data.LevelInformation levelInformation;
 
     /// <summary>
     /// Handler to UI
@@ -45,7 +43,8 @@ public class GameEngine : MonoBehaviour
         LoadLevel();
     }
 
-    private void FixedUpdate()
+    // Update is called once per frame
+    void Update()
     {
         // Check the life lost information
         if (levelInformation.isLifeLost == true)
@@ -64,7 +63,6 @@ public class GameEngine : MonoBehaviour
         }
 
         CheckPause();
-
     }
 
     /// <summary>
@@ -81,6 +79,11 @@ public class GameEngine : MonoBehaviour
 
         // Sets the time scaling, depending on
         Time.timeScale = levelInformation.isGameOnPause ? 0.0f : 1.0f;
+
+        // Toggles pause panel
+        uIManagement.pausePanel.SetActive(levelInformation.isGameOnPause);
+
+        // Set up pause panel
 
         pauseInternalState = levelInformation.isGameOnPause;
     }
@@ -191,9 +194,12 @@ public class GameEngine : MonoBehaviour
             Utils.ExtraSceneManagement.Load(levelInformation.levelName);
         }
 
-        // We display lives
 
+        // We display lives
         uIManagement.DisplayLives();
+
+        // Save game on level load
+        SaveAdventure();
     }
 
     /// <summary>
@@ -201,12 +207,19 @@ public class GameEngine : MonoBehaviour
     /// </summary>
     public void UnloadLevel()
     {
-        // TODO: destroy the player if that player is present
+        // Check for the player (marked as clone since it has been instanciated by the Instanciate command)
+        GameObject player = GameObject.Find("Player(Clone)");
 
+        // If that player was set, destroy it
+        if (player != null)
+        {
+            Destroy(player);
+        }
+
+        // Unload level
         Utils.ExtraSceneManagement.Unload(levelInformation.levelName);
 
         // We remove lives displayed
-
         uIManagement.RemoveLivesDisplayed();
 
     }
@@ -259,10 +272,4 @@ public class GameEngine : MonoBehaviour
 
     #endregion
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

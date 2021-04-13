@@ -1,18 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    /// <summary>
+    /// Get horizontal axis 
+    /// </summary>
+    /// <returns>Value between -1 and +1</returns>
+    public float GetHorizontalAxis()
     {
-        
+        return Input.GetAxis("Horizontal");
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Get vertical axis
+    /// </summary>
+    /// <returns>Value between -1 and +1</returns>
+    public float GetVerticalAxis()
     {
-        
+        return Input.GetAxis("Vertical");
+    }
+
+    /// <summary>
+    /// Get pause
+    /// </summary>
+    /// <returns>State about the key has been just pressed</returns>
+    public bool GetPausePressed()
+    {
+        return Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape);
     }
 }
