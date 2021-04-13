@@ -22,9 +22,18 @@ public class GameController : MonoBehaviour
     }
 
     /// <summary>
+    /// Get the action on jump
+    /// </summary>
+    /// <returns>State about the key pressed</returns>
+    public bool GetJump()
+    {
+        return Input.GetKeyDown(KeyCode.Space);
+    }
+
+    /// <summary>
     /// Get pause
     /// </summary>
-    /// <returns>State about the key has been just pressed</returns>
+    /// <returns>State about the key pressed</returns>
     public bool GetPausePressed()
     {
         return Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape);

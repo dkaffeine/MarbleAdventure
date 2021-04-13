@@ -259,13 +259,15 @@ public class GameEngine : MonoBehaviour
 
         ResetGame();
 
-        // TODO : game over display with choice
+        uIManagement.gameOverPanel.SetActive(true);
     }
 
     public void ResetGame()
     {
         adventureData.lives = adventureData.livesMax;
         adventureData.level = 1;
+
+        SaveAdventure();
     }
 
 

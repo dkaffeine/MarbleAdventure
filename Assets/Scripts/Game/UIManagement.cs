@@ -35,6 +35,11 @@ public class UIManagement : MonoBehaviour
     public GameObject pausePanel;
 
     /// <summary>
+    /// Handler to the game over panel
+    /// </summary>
+    public GameObject gameOverPanel;
+
+    /// <summary>
     /// Removes lives displayed
     /// </summary>
     public void RemoveLivesDisplayed()
