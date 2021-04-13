@@ -10,24 +10,6 @@
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "R58M97N9X4F",
-            "name": "com.com.ducky.MarbleAdventure",
-            "processId": 1907,
-            "exited": true
-        },
-        {
-            "deviceId": "R58M97N9X4F",
-            "name": "com.com.ducky.MarbleAdventure",
-            "processId": 5825,
-            "exited": true
-        },
-        {
-            "deviceId": "R58M97N9X4F",
-            "name": "com.com.ducky.MarbleAdventure",
-            "processId": 10889,
-            "exited": true
-        },
-        {
-            "deviceId": "R58M97N9X4F",
             "name": "com.sec.android.app.launcher",
             "processId": 10642,
             "exited": false
@@ -42,6 +24,24 @@
             "deviceId": "R58M97N9X4F",
             "name": "com.com.ducky.MarbleAdventure",
             "processId": 14897,
+            "exited": true
+        },
+        {
+            "deviceId": "R58M97N9X4F",
+            "name": "com.com.ducky.MarbleAdventure",
+            "processId": 30412,
+            "exited": true
+        },
+        {
+            "deviceId": "R58M97N9X4F",
+            "name": "com.com.ducky.MarbleAdventure",
+            "processId": 31585,
+            "exited": true
+        },
+        {
+            "deviceId": "R58M97N9X4F",
+            "name": "com.com.ducky.MarbleAdventure",
+            "processId": 6517,
             "exited": true
         }
     ],

@@ -58,6 +58,14 @@ namespace Utils
         }
 
         /// <summary>
+        /// Pushes the game back by closing the in-game pause menu
+        /// </summary>
+        public void ClosePause()
+        {
+            GameEngine.levelInformation.isGameOnPause = false;
+        }
+
+        /// <summary>
         /// Closes the application
         /// </summary>
         public void Quit()
