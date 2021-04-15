@@ -40,6 +40,16 @@ public class UIManagement : MonoBehaviour
     public GameObject gameOverPanel;
 
     /// <summary>
+    /// Handler to the UI panel
+    /// </summary>
+    public GameObject uIPanel;
+
+    /// <summary>
+    /// Handler to the android panel
+    /// </summary>
+    public GameObject androidPanel;
+
+    /// <summary>
     /// Handler to the money text
     /// </summary>
     public Text moneyText;

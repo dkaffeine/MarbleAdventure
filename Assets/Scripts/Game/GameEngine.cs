@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -107,6 +108,8 @@ public class GameEngine : MonoBehaviour
     {
         if (wasAdventureDataLoaded == true)
         {
+            levelInformation.isGameOnPause = false;
+            Time.timeScale = 1.0f;
             return;
         }
 
@@ -255,6 +258,9 @@ public class GameEngine : MonoBehaviour
 
     public void GameOver()
     {
+
+        UnloadUI();
+
         UnloadLevel();
 
         ResetGame();
@@ -262,10 +268,17 @@ public class GameEngine : MonoBehaviour
         uIManagement.gameOverPanel.SetActive(true);
     }
 
+    private void UnloadUI()
+    {
+        uIManagement.uIPanel.SetActive(false);
+        uIManagement.androidPanel.SetActive(false);
+    }
+
     public void ResetGame()
     {
         adventureData.lives = adventureData.livesMax;
         adventureData.level = 1;
+        adventureData.money = 0;
 
         SaveAdventure();
     }
