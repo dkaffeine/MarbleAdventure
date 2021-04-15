@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1775049802}
   - component: {fileID: 1775049805}
   - component: {fileID: 1775049804}
+  - component: {fileID: 1644385458700288347}
   m_Layer: 0
   m_Name: Platform Flag
   m_TagString: Untagged
@@ -81,6 +82,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1644385458700288347
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775049801}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.99999994, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2271433790195206354
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +106,7 @@ GameObject:
   - component: {fileID: 2271433790195210029}
   - component: {fileID: 2271433790195210030}
   - component: {fileID: 2271433790195210031}
-  - component: {fileID: 404574208}
+  - component: {fileID: 6366505489343380104}
   m_Layer: 0
   m_Name: Platform Point
   m_TagString: Untagged
@@ -163,19 +177,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &404574208
-MonoBehaviour:
+--- !u!136 &6366505489343380104
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2271433790195206354}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15f03b42a1179c2458cbdeca44feb758, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 3705850174887174989, guid: 68248ff38e84fea4eb960c7dd9c619ac, type: 3}
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &3487490451534254128
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3487490451534254135}
+  - component: {fileID: 7991127088100868247}
   m_Layer: 0
   m_Name: Spawn Ground
   m_TagString: Untagged
@@ -209,6 +225,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7991127088100868247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3487490451534254128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f03b42a1179c2458cbdeca44feb758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 3705850174887174989, guid: 68248ff38e84fea4eb960c7dd9c619ac, type: 3}
 --- !u!1001 &1091746762979406846
 PrefabInstance:
   m_ObjectHideFlags: 0

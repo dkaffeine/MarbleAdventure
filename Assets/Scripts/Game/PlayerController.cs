@@ -5,8 +5,9 @@ public class PlayerController : MonoBehaviour
 {
 
     /// <summary>
-    /// Handler to game controller structure
+    /// Handler to game engine and game controller structure
     /// </summary>
+    private GameEngine gameEngine;
     private GameController gameController;
 
     /// <summary>
@@ -37,6 +38,9 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Get the game engine structure from the scene
+        gameEngine = GameObject.Find("GameEngine").GetComponent<GameEngine>();
+
         // Get the game controller structure from the scene
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
 
@@ -55,15 +59,9 @@ public class PlayerController : MonoBehaviour
 
         UpdateJump();
 
-        CheckLowerBound();
-    }
-
-    /// <summary>
-    /// Updates that happens on fixed update - that allows to have a fixed time frame for the game engine
-    /// </summary>
-    private void FixedUpdate()
-    {
         UpdateEntities();
+
+        CheckLowerBound();
     }
 
     /// <summary>
@@ -82,6 +80,11 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void UpdateEntities()
     {
+        if (GameEngine.levelInformation.isGameOnPause == true)
+        {
+            return;
+        }
+        
         // Horizontal displacement allowed only if the player is touching the ground
         if (isOnGround)
         {
@@ -92,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
         // Update left / right, depending on the horizontal input
         float horizontalAxis = gameController.GetHorizontalAxis();
-        focalPoint.transform.Rotate(focalPoint.transform.up, horizontalAxis * Time.fixedDeltaTime * 90.0f);
+        focalPoint.transform.Rotate(focalPoint.transform.up, horizontalAxis * Time.deltaTime * 90.0f);
 
         // Update focal point position on player position
         focalPoint.transform.position = GetGroundPosition();
@@ -158,6 +161,17 @@ public class PlayerController : MonoBehaviour
         {
             GameEngine.adventureData.money += other.GetComponent<Coin>().coinValue;
             Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Powerup"))
+        {
+            PowerupType powerupType = other.GetComponent<Powerup>().powerupType;
+            if (powerupType != GameEngine.adventureData.powerup)
+            {
+                GameEngine.adventureData.powerup = powerupType;
+
+                gameEngine.uIManagement.UpdatePowerup();
+            }
         }
     }
 

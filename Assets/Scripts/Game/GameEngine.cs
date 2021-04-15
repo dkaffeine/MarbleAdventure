@@ -198,8 +198,9 @@ public class GameEngine : MonoBehaviour
         }
 
 
-        // We display lives
+        // We display lives and powerups
         uIManagement.DisplayLives();
+        uIManagement.UpdatePowerup();
 
         // Save game on level load
         SaveAdventure();
@@ -279,6 +280,7 @@ public class GameEngine : MonoBehaviour
         adventureData.lives = adventureData.livesMax;
         adventureData.level = 1;
         adventureData.money = 0;
+        adventureData.powerup = PowerupType.None;
 
         SaveAdventure();
     }

@@ -17,12 +17,6 @@
         {
             "deviceId": "R58M97N9X4F",
             "name": "com.com.ducky.MarbleAdventure",
-            "processId": 31585,
-            "exited": true
-        },
-        {
-            "deviceId": "R58M97N9X4F",
-            "name": "com.com.ducky.MarbleAdventure",
             "processId": 6517,
             "exited": true
         },
@@ -42,6 +36,12 @@
             "deviceId": "R58M97N9X4F",
             "name": "com.com.ducky.MarbleAdventure",
             "processId": 23137,
+            "exited": true
+        },
+        {
+            "deviceId": "R58M97N9X4F",
+            "name": "com.com.ducky.MarbleAdventure",
+            "processId": 29481,
             "exited": true
         }
     ],
