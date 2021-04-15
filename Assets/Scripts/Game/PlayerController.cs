@@ -51,9 +51,30 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateEntities();
+        CheckPauseButton();
+
+        UpdateJump();
 
         CheckLowerBound();
+    }
+
+    /// <summary>
+    /// Updates that happens on fixed update - that allows to have a fixed time frame for the game engine
+    /// </summary>
+    private void FixedUpdate()
+    {
+        UpdateEntities();
+    }
+
+    /// <summary>
+    /// Checks pause button
+    /// </summary>
+    private void CheckPauseButton()
+    {
+        if (gameController.GetPausePressed())
+        {
+            GameEngine.levelInformation.isGameOnPause = !GameEngine.levelInformation.isGameOnPause;
+        }
     }
 
     /// <summary>
@@ -61,51 +82,51 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void UpdateEntities()
     {
-        if (gameController.GetPausePressed())
+        // Horizontal displacement allowed only if the player is touching the ground
+        if (isOnGround)
         {
-            GameEngine.levelInformation.isGameOnPause = !GameEngine.levelInformation.isGameOnPause;
+            // Update forward / backward force, depending on the vertical input
+            float forwardInput = gameController.GetVerticalAxis();
+            playerRigidbody.AddForce(focalPoint.transform.forward * GameEngine.adventureData.speed * forwardInput);
         }
-        
-        if (GameEngine.levelInformation.isGameOnPause == false)
-        { 
 
-            // Horizontal displacement allowed only if the player is touching the ground
+        // Update left / right, depending on the horizontal input
+        float horizontalAxis = gameController.GetHorizontalAxis();
+        focalPoint.transform.Rotate(focalPoint.transform.up, horizontalAxis * Time.fixedDeltaTime * 90.0f);
+
+        // Update focal point position on player position
+        focalPoint.transform.position = GetGroundPosition();
+    }
+
+    /// <summary>
+    /// Method that handles with the jump feature, has to be checked on each frame
+    /// </summary>
+    private void UpdateJump()
+    {
+        if (GameEngine.levelInformation.isGameOnPause == true)
+        {
+            return;
+        }
+        bool spacePressed = gameController.GetJump();
+        if (spacePressed)
+        {
             if (isOnGround)
             {
-                // Update forward / backward force, depending on the vertical input
-                float forwardInput = gameController.GetVerticalAxis();
-                playerRigidbody.AddForce(focalPoint.transform.forward * GameEngine.adventureData.speed * forwardInput);
-
+                isOnGround = false;
+                playerRigidbody.AddForce(focalPoint.transform.up * 10.0f, ForceMode.Impulse);
             }
-
-            // Update left / right, depending on the horizontal input
-            float horizontalAxis = gameController.GetHorizontalAxis();
-            focalPoint.transform.Rotate(focalPoint.transform.up, horizontalAxis * Time.deltaTime * 90.0f);
-
-            bool spacePressed = gameController.GetJump();
-            if (spacePressed)
+            else if (canDoubleJump)
             {
-                if (isOnGround)
-                {
-                    isOnGround = false;
-
-                    playerRigidbody.AddForce(focalPoint.transform.up * 10.0f, ForceMode.Impulse);
-                }
-                else if (canDoubleJump)
-                {
-                    canDoubleJump = false;
-                    // TODO : the double jump action depends on the powerup equipped
-                }
-
-
+                canDoubleJump = false;
+                // TODO : the double jump action depends on the powerup equipped
             }
-
-            // Update focal point position on player position
-            focalPoint.transform.position = GetGroundPosition();
-
-            
         }
     }
+
+    /// <summary>
+    /// Gets the ground position
+    /// </summary>
+    /// <returns>Ground point</returns>
     Vector3 GetGroundPosition()
     {
         Vector3 returnValue = transform.position - new Vector3(0, playerSphereRadius, 0);
@@ -130,4 +151,14 @@ public class PlayerController : MonoBehaviour
             canDoubleJump = true;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Coin"))
+        {
+            GameEngine.adventureData.money += other.GetComponent<Coin>().coinValue;
+            Destroy(other.gameObject);
+        }
+    }
+
 }

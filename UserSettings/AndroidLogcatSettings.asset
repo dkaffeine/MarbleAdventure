@@ -17,24 +17,6 @@
         {
             "deviceId": "R58M97N9X4F",
             "name": "com.com.ducky.MarbleAdventure",
-            "processId": 13866,
-            "exited": true
-        },
-        {
-            "deviceId": "R58M97N9X4F",
-            "name": "com.com.ducky.MarbleAdventure",
-            "processId": 14897,
-            "exited": true
-        },
-        {
-            "deviceId": "R58M97N9X4F",
-            "name": "com.com.ducky.MarbleAdventure",
-            "processId": 30412,
-            "exited": true
-        },
-        {
-            "deviceId": "R58M97N9X4F",
-            "name": "com.com.ducky.MarbleAdventure",
             "processId": 31585,
             "exited": true
         },
@@ -42,6 +24,24 @@
             "deviceId": "R58M97N9X4F",
             "name": "com.com.ducky.MarbleAdventure",
             "processId": 6517,
+            "exited": true
+        },
+        {
+            "deviceId": "R58M97N9X4F",
+            "name": "com.com.ducky.MarbleAdventure",
+            "processId": 8426,
+            "exited": true
+        },
+        {
+            "deviceId": "R58M97N9X4F",
+            "name": "com.com.ducky.MarbleAdventure",
+            "processId": 19321,
+            "exited": true
+        },
+        {
+            "deviceId": "R58M97N9X4F",
+            "name": "com.com.ducky.MarbleAdventure",
+            "processId": 23137,
             "exited": true
         }
     ],

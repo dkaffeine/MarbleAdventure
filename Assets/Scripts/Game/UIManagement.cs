@@ -40,6 +40,17 @@ public class UIManagement : MonoBehaviour
     public GameObject gameOverPanel;
 
     /// <summary>
+    /// Handler to the money text
+    /// </summary>
+    public Text moneyText;
+
+    /// <summary>
+    /// Handler to the first heart placeholder
+    /// </summary>
+    public Image heartPlaceholder;
+
+
+    /// <summary>
     /// Removes lives displayed
     /// </summary>
     public void RemoveLivesDisplayed()
@@ -77,7 +88,7 @@ public class UIManagement : MonoBehaviour
             image.GetComponent<RectTransform>().SetParent(canvas.transform);
 
             // Set image position
-            Vector3 imagePosition = new Vector3((0.5f * heartSize) + 50 * (live - 1), 460);
+            Vector3 imagePosition = heartPlaceholder.rectTransform.position + new Vector3(50 * (live - 1), 0);
             image.rectTransform.position = imagePosition;
 
             // Set image size
@@ -85,5 +96,13 @@ public class UIManagement : MonoBehaviour
             image.rectTransform.sizeDelta = imageSize;
             image.name = heartName;
         }
+    }
+
+    /// <summary>
+    /// Update the money on fixed update
+    /// </summary>
+    private void FixedUpdate()
+    {
+        moneyText.text = "Money: " + GameEngine.adventureData.money.ToString();
     }
 }
