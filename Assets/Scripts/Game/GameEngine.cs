@@ -35,7 +35,6 @@ public class GameEngine : MonoBehaviour
     /// </summary>
     private bool pauseInternalState = false;
 
-
     // Start is called before the first frame update
     void Start()
     {

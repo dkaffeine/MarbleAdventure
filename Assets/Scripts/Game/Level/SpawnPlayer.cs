@@ -18,7 +18,7 @@ public class SpawnPlayer : MonoBehaviour
     /// <returns>Returns spawn position</returns>
     Vector3 SpawnPos()
     {
-        return transform.position + new Vector3(0, playerSphereRadius, 2.0f * playerSphereRadius);
+        return transform.position + new Vector3(0, 0, 2.0f * playerSphereRadius);
     }
 
     // Start is called before the first frame update, or when the object wakes up

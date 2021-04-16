@@ -66,6 +66,16 @@ namespace Utils
         }
 
         /// <summary>
+        /// Force the data reset
+        /// </summary>
+        public void ForceResetData()
+        {
+            GameEngine.adventureData = new Data.Adventure();
+            string fileName = GameEngine.GetFileName();
+            FileManagement.SaveData(GameEngine.adventureData, fileName);
+        }
+
+        /// <summary>
         /// Closes the application
         /// </summary>
         public void Quit()

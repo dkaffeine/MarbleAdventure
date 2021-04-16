@@ -6,7 +6,7 @@ namespace Data
     [System.Serializable]
     public class Adventure
     {
-        public float speed = 8.0f;
+        public float speed = 500.0f;
         public uint level = 1;
         public uint lives = 3;
         public uint livesMax = 3;

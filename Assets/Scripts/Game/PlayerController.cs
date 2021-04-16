@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -90,7 +91,7 @@ public class PlayerController : MonoBehaviour
         {
             // Update forward / backward force, depending on the vertical input
             float forwardInput = gameController.GetVerticalAxis();
-            playerRigidbody.AddForce(focalPoint.transform.forward * GameEngine.adventureData.speed * forwardInput);
+            playerRigidbody.AddForce(focalPoint.transform.forward * GameEngine.adventureData.speed * Time.deltaTime * forwardInput);
         }
 
         // Update left / right, depending on the horizontal input
@@ -159,8 +160,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Coin"))
         {
-            GameEngine.adventureData.money += other.GetComponent<Coin>().coinValue;
-            Destroy(other.gameObject);
+            StartCoroutine(CoinTrigger(other));
         }
 
         if (other.CompareTag("Powerup"))
@@ -173,6 +173,19 @@ public class PlayerController : MonoBehaviour
                 gameEngine.uIManagement.UpdatePowerup();
             }
         }
+    }
+
+    private IEnumerator CoinTrigger(Collider coin)
+    {
+        if (coin.GetComponent<Coin>().coinTriggered == true)
+        {
+            yield return null;
+        }
+
+        coin.GetComponent<Coin>().volumeSE.Play();
+        yield return new WaitForSeconds(0.157f);
+        GameEngine.adventureData.money += coin.GetComponent<Coin>().coinValue;
+        Destroy(coin.gameObject);
     }
 
 }

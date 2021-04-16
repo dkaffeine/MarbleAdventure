@@ -4,7 +4,17 @@ public class Coin : MonoBehaviour
 {
     private static readonly float rotationDegreesPerSecond = 180.0f;
 
+    public VolumeSE volumeSE;
+
     public long coinValue;
+
+    public bool coinTriggered = false;
+
+    // Start is called before the first frame
+    void Start()
+    {
+        volumeSE = gameObject.GetComponent<VolumeSE>();
+    }
 
     // Update is called once per frame
     void Update()
