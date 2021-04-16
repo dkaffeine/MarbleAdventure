@@ -167,7 +167,8 @@ public class UIManagement : MonoBehaviour
         image.sprite = sprite;
 
         // Set hierarchy
-        image.GetComponent<RectTransform>().SetParent(uIPanel.gameObject.transform);
+        GameObject jumpButton = GameObject.Find("JumpButton");
+        image.GetComponent<RectTransform>().SetParent(jumpButton.transform);
 
         // Set position
         Vector3 imagePosition = powerupPlaceholder.rectTransform.position;

@@ -8,10 +8,12 @@ public class Powerup : MonoBehaviour
 
     public PowerupType powerupType;
 
+    public VolumeSE volumeSE;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        volumeSE = gameObject.GetComponent<VolumeSE>();
     }
 
     // Update is called once per frame

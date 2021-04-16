@@ -165,13 +165,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Powerup"))
         {
-            PowerupType powerupType = other.GetComponent<Powerup>().powerupType;
-            if (powerupType != GameEngine.adventureData.powerup)
-            {
-                GameEngine.adventureData.powerup = powerupType;
-
-                gameEngine.uIManagement.UpdatePowerup();
-            }
+            StartCoroutine(PowerupTrigger(other));
         }
     }
 
@@ -186,6 +180,19 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.157f);
         GameEngine.adventureData.money += coin.GetComponent<Coin>().coinValue;
         Destroy(coin.gameObject);
+    }
+
+    public IEnumerator PowerupTrigger(Collider powerup)
+    {
+        PowerupType powerupType = powerup.GetComponent<Powerup>().powerupType;
+        if (powerupType != GameEngine.adventureData.powerup)
+        { 
+            // Since the powerup is different, we gonna do stuff
+            GameEngine.adventureData.powerup = powerupType;
+            powerup.GetComponent<Powerup>().volumeSE.Play();
+            gameEngine.uIManagement.UpdatePowerup();
+        }
+        yield return null;
     }
 
 }

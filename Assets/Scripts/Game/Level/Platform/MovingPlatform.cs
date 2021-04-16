@@ -68,18 +68,7 @@ public class MovingPlatform : InteractableElement
     /// </summary>
     public Vector3 endPosition;
 
-    /// <summary>
-    /// Handler to rigidbody
-    /// </summary>
-    private new Rigidbody rigidbody;
-
     #endregion
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rigidbody = gameObject.GetComponent<Rigidbody>();
-    }
 
     public void FixedUpdate()
     {
