@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Coin
   - Powerup
+  - TriggerButton
   layers:
   - Default
   - TransparentFX

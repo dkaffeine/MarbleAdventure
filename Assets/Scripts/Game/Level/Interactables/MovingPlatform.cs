@@ -72,6 +72,13 @@ public class MovingPlatform : InteractableElement
 
     public void FixedUpdate()
     {
+
+        if (activate == false)
+        {
+            // If the platform is not activated, return without doing anything
+            return;
+        }
+
         // Update time
         time += Time.fixedDeltaTime / duration;
 
