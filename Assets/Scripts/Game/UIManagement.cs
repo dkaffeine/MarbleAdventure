@@ -32,6 +32,11 @@ public class UIManagement : MonoBehaviour
     public GameObject androidPanel;
 
     /// <summary>
+    /// Handler to the level text
+    /// </summary>
+    public Text levelText;
+
+    /// <summary>
     /// Handler to the money text
     /// </summary>
     public Text moneyText;
@@ -143,6 +148,7 @@ public class UIManagement : MonoBehaviour
     private void FixedUpdate()
     {
         moneyText.text = "Money: " + GameEngine.adventureData.money.ToString();
+        levelText.text = "Level: " + GameEngine.adventureData.level.ToString();
     }
 
     /// <summary>

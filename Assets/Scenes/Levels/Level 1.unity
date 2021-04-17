@@ -130,6 +130,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1460124951}
     m_Modifications:
+    - target: {fileID: 361478262785522149, guid: cc10cc05508ec6c4c8c9ebd3df26da3a,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Level: 1'
+      objectReference: {fileID: 0}
     - target: {fileID: 3217584838759997284, guid: cc10cc05508ec6c4c8c9ebd3df26da3a,
         type: 3}
       propertyPath: levelToJump
@@ -1267,7 +1272,7 @@ PrefabInstance:
     - target: {fileID: 2033431466714927512, guid: 8d7ee4df08632374d88721c115191793,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2033431466714927512, guid: 8d7ee4df08632374d88721c115191793,
         type: 3}
