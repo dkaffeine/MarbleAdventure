@@ -82,6 +82,11 @@ public class OptionsHandler : MonoBehaviour
     /// <returns>Returns the music value, as a float number between 0 and 1</returns>
     public static float GetSoundVolume()
     {
-        return options.muteSound ? 0.0f : options.soundVolume;
+        return options.soundVolume;
+    }
+
+    public static bool GetSoundMute()
+    {
+        return options.muteSound;
     }
 }

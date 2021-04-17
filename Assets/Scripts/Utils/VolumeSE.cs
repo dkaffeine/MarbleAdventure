@@ -9,7 +9,7 @@ public class VolumeSE : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource = gameObject.GetComponentInChildren<AudioSource>();
     }
 
     private void SetVolume()
@@ -20,6 +20,7 @@ public class VolumeSE : MonoBehaviour
             return;
         }
         audioSource.volume = OptionsHandler.GetSoundVolume();
+        audioSource.mute = OptionsHandler.GetSoundMute();
     }
 
     // Update is called once per frame

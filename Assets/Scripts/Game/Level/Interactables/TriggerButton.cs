@@ -45,7 +45,6 @@ public class TriggerButton : InteractableElement
             {
                 interactableElement.PerformInteraction();
             }
-
         }
     }
 }

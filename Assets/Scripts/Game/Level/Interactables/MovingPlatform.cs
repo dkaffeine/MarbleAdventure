@@ -70,7 +70,13 @@ public class MovingPlatform : InteractableElement
 
     #endregion
 
-    public void FixedUpdate()
+    private void Start()
+    {
+        // On start, set position to initial position
+        UpdatePosition(0.0f);
+    }
+
+    private void FixedUpdate()
     {
 
         if (activate == false)
