@@ -20,6 +20,7 @@ public class VolumeBGM : MonoBehaviour
             return;
         }
         audioSource.volume = OptionsHandler.GetMusicVolume();
+        audioSource.mute = OptionsHandler.GetMusicMute();
     }
 
     // Update is called once per frame

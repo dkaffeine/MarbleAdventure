@@ -11,8 +11,6 @@ public class TriggerButton : InteractableElement
 
     public VolumeSE volumeSE;
 
-    public Material material;
-
     // Start is called before the first frame update
     void Start()
     {
