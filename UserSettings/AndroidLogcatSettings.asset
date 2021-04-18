@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "R58M97N9X4F",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "R58M97N9X4F",
+        "name": "com.com.ducky.MarbleAdventure",
+        "processId": 4961,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -43,6 +43,12 @@
             "name": "com.com.ducky.MarbleAdventure",
             "processId": 3635,
             "exited": true
+        },
+        {
+            "deviceId": "R58M97N9X4F",
+            "name": "com.com.ducky.MarbleAdventure",
+            "processId": 4961,
+            "exited": false
         }
     ],
     "m_Tags": {
