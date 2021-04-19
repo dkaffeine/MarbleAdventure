@@ -6,9 +6,13 @@ public class PlayerController : MonoBehaviour
 {
 
     /// <summary>
-    /// Handler to game engine and game controller structure
+    /// Handler to the game engine structure
     /// </summary>
     private GameEngine gameEngine;
+
+    /// <summary>
+    /// Handler to the game controller structure
+    /// </summary>
     private GameController gameController;
 
     /// <summary>
@@ -223,11 +227,28 @@ public class PlayerController : MonoBehaviour
 
         if (GameEngine.adventureData.money < itemPrice)
         {
-            // If we don't have enough money
+            // If we don't have enough money, do nothing
             yield return null;
         }
 
-        GameEngine.adventureData.money -= itemPrice;
+        switch (buyableObject.GetComponent<ShowcaseItem>().itemType)
+        {
+            case ShowcaseItem.ItemType.ExtraLife:
+                if (GameEngine.adventureData.lives == GameEngine.adventureData.livesMax)
+                {
+                    yield return null;
+                }
+                else
+                {
+                    GameEngine.adventureData.lives++;
+                    gameEngine.uIManagement.RemoveLivesDisplayed();
+                    gameEngine.uIManagement.DisplayLives();
+                    GameEngine.adventureData.money -= itemPrice;
+                }
+                break;
+            default:
+                break;
+        }
 
         buyableObject.GetComponent<ShowcaseItem>().volumeSE.Play();
         yield return new WaitForSeconds(0.157f);

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Powerup : MonoBehaviour
 {
-    private static readonly float rotationDegreesPerSecond = 180.0f;
-
     public PowerupType powerupType;
 
     public VolumeSE volumeSE;
@@ -50,7 +48,7 @@ public class Powerup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 eulerAngles = new Vector3(0, rotationDegreesPerSecond * Time.deltaTime, 0);
+        Vector3 eulerAngles = new Vector3(0, GameEngine.interactableRotationSpeed * Time.deltaTime, 0);
 
         transform.Rotate(eulerAngles);
     }

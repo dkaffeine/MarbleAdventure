@@ -79,7 +79,7 @@ public class MovingPlatform : InteractableElement
     private void FixedUpdate()
     {
 
-        if (activate == false)
+        if (interactableActivated == false)
         {
             // If the platform is not activated, return without doing anything
             return;
@@ -123,7 +123,7 @@ public class MovingPlatform : InteractableElement
         position = Mathf.Clamp01(time);
         if (position >= 1.0f)
         {
-            activate = false;
+            interactableActivated = false;
         }
     }
 

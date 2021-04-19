@@ -7,7 +7,7 @@ public class InteractableElement : MonoBehaviour
     /// <summary>
     /// Flag for platform activator
     /// </summary>
-    public bool activate = false;
+    public bool interactableActivated = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +26,14 @@ public class InteractableElement : MonoBehaviour
     /// </summary>
     public void PerformInteraction()
     {
-        activate = true;
+        interactableActivated = true;
+    }
+
+    /// <summary>
+    /// Deactivation function
+    /// </summary>
+    public void PerformUninteraction()
+    {
+        interactableActivated = false;
     }
 }

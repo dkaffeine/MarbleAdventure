@@ -11,6 +11,8 @@ public class TriggerButton : InteractableElement
 
     public VolumeSE volumeSE;
 
+    public bool newStatus = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,10 +29,10 @@ public class TriggerButton : InteractableElement
 
     private void OnTriggerEnter(Collider other)
     {
-        if (activate && other.CompareTag("Player"))
+        if (interactableActivated && other.CompareTag("Player"))
         {
             // If that trigger is actiaved and it collides the player, we activate the button
-            activate = false;
+            interactableActivated = false;
             volumeSE.Play();
 
             Light light = GetComponentInChildren<Light>();
@@ -39,10 +41,16 @@ public class TriggerButton : InteractableElement
                 light.enabled = true;
             }
 
-            if (interactableElement)
+            if (interactableElement && newStatus == true)
             {
                 interactableElement.PerformInteraction();
             }
+
+            if (interactableElement && newStatus == false)
+            {
+                interactableElement.PerformUninteraction();
+            }
+
         }
     }
 }
