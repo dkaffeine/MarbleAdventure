@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: a952d7f84c996cb4fbc9e63b902abe89
+guid: 94af1b4a041292a469a37018a5986b2e
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur_Material
+    second: {fileID: 2100000, guid: b4eed71ce855ae240b91c21617e3da5b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

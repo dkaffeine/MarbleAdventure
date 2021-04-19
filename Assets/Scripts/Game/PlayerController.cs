@@ -32,9 +32,9 @@ public class PlayerController : MonoBehaviour
     private bool isOnGround = false;
 
     /// <summary>
-    /// Gives the state being able to double-jump
+    /// Gives the state being able to make an mid-air action
     /// </summary>
-    private bool canDoubleJump = false;
+    private bool canMidAirAction = false;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         // Get the game controller structure from the scene
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
 
-        // Get the focal point object
+        // Get the focal point object, and resets that point to the original view (identity)
         focalPoint = GameObject.Find("FocalPoint");
         focalPoint.transform.rotation = Quaternion.identity;
 
@@ -83,6 +83,7 @@ public class PlayerController : MonoBehaviour
     {
         if (GameEngine.levelInformation.isGameOnPause == true)
         {
+            // If game is on pause, no controller interaction is taken into account
             return;
         }
         
@@ -119,10 +120,24 @@ public class PlayerController : MonoBehaviour
                 isOnGround = false;
                 playerRigidbody.AddForce(focalPoint.transform.up * 10.0f, ForceMode.Impulse);
             }
-            else if (canDoubleJump)
+            else if (canMidAirAction)
             {
-                canDoubleJump = false;
-                // TODO : the double jump action depends on the powerup equipped
+                canMidAirAction = false;
+                switch(GameEngine.adventureData.powerup)
+                {
+                    case PowerupType.Dash:
+                        playerRigidbody.AddForce(focalPoint.transform.forward * 30.0f, ForceMode.Impulse);
+                        break;
+                    case PowerupType.DoubleJump:
+                        playerRigidbody.AddForce(focalPoint.transform.up * 10.0f, ForceMode.Impulse);
+                        break;
+                    case PowerupType.Gravity:
+                        playerRigidbody.AddForce(focalPoint.transform.up * -10.0f, ForceMode.Impulse);
+                        break;
+                    default:
+                        // By default, there's no mid-air action
+                        break;
+                }
             }
         }
     }
@@ -152,7 +167,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
-            canDoubleJump = true;
+            canMidAirAction = true;
         }
     }
 
@@ -167,6 +182,12 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(PowerupTrigger(other));
         }
+
+        if (other.CompareTag("BuyableObject"))
+        {
+            StartCoroutine(BuyableObjectTrigger(other));
+        }
+
     }
 
     private IEnumerator CoinTrigger(Collider coin)
@@ -192,6 +213,26 @@ public class PlayerController : MonoBehaviour
             powerup.GetComponent<Powerup>().volumeSE.Play();
             gameEngine.uIManagement.UpdatePowerup();
         }
+        yield return null;
+    }
+
+    private IEnumerator BuyableObjectTrigger(Collider buyableObject)
+    {
+        uint itemPrice = buyableObject.GetComponent<ShowcaseItem>().itemPrice;
+        ShowcaseItem.ItemType itemType = buyableObject.GetComponent<ShowcaseItem>().itemType;
+
+        if (GameEngine.adventureData.money < itemPrice)
+        {
+            // If we don't have enough money
+            yield return null;
+        }
+
+        GameEngine.adventureData.money -= itemPrice;
+
+        buyableObject.GetComponent<ShowcaseItem>().volumeSE.Play();
+        yield return new WaitForSeconds(0.157f);
+        Destroy(buyableObject.gameObject);
+
         yield return null;
     }
 

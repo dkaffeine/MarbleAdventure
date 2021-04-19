@@ -8,6 +8,7 @@ TagManager:
   - Coin
   - Powerup
   - TriggerButton
+  - BuyableObject
   layers:
   - Default
   - TransparentFX

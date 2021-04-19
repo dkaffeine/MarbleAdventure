@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "R58M97N9X4F",
     "m_SelectedPackage": {
-        "deviceId": "R58M97N9X4F",
-        "name": "com.com.ducky.MarbleAdventure",
-        "processId": 4961,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -13,18 +13,6 @@
             "name": "com.sec.android.app.launcher",
             "processId": 10642,
             "exited": false
-        },
-        {
-            "deviceId": "R58M97N9X4F",
-            "name": "com.com.ducky.MarbleAdventure",
-            "processId": 29481,
-            "exited": true
-        },
-        {
-            "deviceId": "R58M97N9X4F",
-            "name": "com.com.ducky.MarbleAdventure",
-            "processId": 31053,
-            "exited": true
         },
         {
             "deviceId": "R58M97N9X4F",
@@ -48,7 +36,13 @@
             "deviceId": "R58M97N9X4F",
             "name": "com.com.ducky.MarbleAdventure",
             "processId": 4961,
-            "exited": false
+            "exited": true
+        },
+        {
+            "deviceId": "R58M97N9X4F",
+            "name": "com.com.ducky.MarbleAdventure",
+            "processId": 18666,
+            "exited": true
         }
     ],
     "m_Tags": {

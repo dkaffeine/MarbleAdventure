@@ -35,6 +35,11 @@ public class GameEngine : MonoBehaviour
     /// </summary>
     private bool pauseInternalState = false;
 
+    /// <summary>
+    /// Rotation speed of interactable items, in degrees per second
+    /// </summary>
+    public static float interactableRotationSpeed = 180.0f;
+
     // Start is called before the first frame update
     void Start()
     {

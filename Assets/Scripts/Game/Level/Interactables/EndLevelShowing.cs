@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EndLevelShowing : MonoBehaviour
 {
-    private static readonly float rotationDegreesPerSecond = 180.0f;
-
     public EndLevel endLevel;
 
     public uint levelToJump;
@@ -27,7 +25,7 @@ public class EndLevelShowing : MonoBehaviour
 
     private void Update()
     {
-        Vector3 eulerAngles = new Vector3(0, rotationDegreesPerSecond * Time.deltaTime, 0);
+        Vector3 eulerAngles = new Vector3(0, GameEngine.interactableRotationSpeed * Time.deltaTime, 0);
 
         levelText.gameObject.transform.Rotate(eulerAngles);
     }

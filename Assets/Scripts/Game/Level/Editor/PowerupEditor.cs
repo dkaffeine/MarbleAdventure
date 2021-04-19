@@ -9,6 +9,7 @@ public class PowerupEditor : Editor
         using (EditorGUI.ChangeCheckScope changeCheck = new EditorGUI.ChangeCheckScope())
         {
             Powerup powerup = target as Powerup;
+            powerup.ActivateIcon();
             Vector3 position = powerup.transform.position + new Vector3(0.0f, 1.0f, 0.0f);
             Handles.Label(position, "Powerup:" + powerup.powerupType.ToString());
         }
