@@ -184,14 +184,10 @@ public class GameEngine : MonoBehaviour
 
         bool hasToLoadLevel = false;
 
-        switch (adventureData.level)
+        if (adventureData.level >= 1 && adventureData.level <= 30)
         {
-            case 1:
-                levelInformation.levelName = "Level 1";
-                hasToLoadLevel = true;
-                break;
-            default:
-                break;
+            levelInformation.levelName = "Level " + adventureData.level.ToString();
+            hasToLoadLevel = true;
         }
 
         if (hasToLoadLevel == true)

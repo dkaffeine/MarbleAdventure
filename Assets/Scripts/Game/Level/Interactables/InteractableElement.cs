@@ -24,7 +24,7 @@ public class InteractableElement : MonoBehaviour
     /// <summary>
     /// Activation function
     /// </summary>
-    public void PerformInteraction()
+    public virtual void PerformInteraction()
     {
         interactableActivated = true;
     }
@@ -32,7 +32,7 @@ public class InteractableElement : MonoBehaviour
     /// <summary>
     /// Deactivation function
     /// </summary>
-    public void PerformUninteraction()
+    public virtual void PerformUninteraction()
     {
         interactableActivated = false;
     }
