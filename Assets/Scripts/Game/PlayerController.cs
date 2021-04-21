@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
         {
             // Update forward / backward force, depending on the vertical input
             float forwardInput = gameController.GetVerticalAxis();
-            playerRigidbody.AddForce(focalPoint.transform.forward * GameEngine.adventureData.speed * Time.deltaTime * forwardInput);
+            playerRigidbody.AddForce(focalPoint.transform.forward * GameEngine.adventureData.velocityForce * Time.deltaTime * forwardInput);
         }
 
         // Update left / right, depending on the horizontal input
