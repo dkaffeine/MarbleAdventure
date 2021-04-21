@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(TriggerButton), true)]
-public class TriggerButtonEditor : Editor
+[CustomEditor(typeof(TimerTriggerButton), true)]
+public class TimerTriggerButtonEditor : Editor
 {
     private void OnSceneGUI()
     {
@@ -11,7 +11,9 @@ public class TriggerButtonEditor : Editor
 
         using (EditorGUI.ChangeCheckScope changeCheck = new EditorGUI.ChangeCheckScope())
         {
-            TriggerButton triggerButton = target as TriggerButton;
+            TimerTriggerButton triggerButton = target as TimerTriggerButton;
+            triggerButton.SetTimerText(triggerButton.timer);
+
             if (triggerButton.interactableElement)
             {
                 Vector3 position = triggerButton.transform.position;
