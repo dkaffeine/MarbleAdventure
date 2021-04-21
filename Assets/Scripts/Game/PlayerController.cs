@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
     private void CheckLowerBound()
     {
         ///If the player entity is too low, a life is lost
-        if (transform.position.y < -10.0f)
+        if (transform.position.y < -20.0f)
         {
             GameEngine.levelInformation.isLifeLost = true;
         }
@@ -194,6 +194,8 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    #region Coin / Cowbell trigger
+
     private IEnumerator CoinTrigger(Collider coin)
     {
         if (coin.GetComponent<Coin>().coinTriggered == true)
@@ -207,6 +209,10 @@ public class PlayerController : MonoBehaviour
         Destroy(coin.gameObject);
     }
 
+    #endregion
+
+    #region Power Up trigger
+
     public IEnumerator PowerupTrigger(Collider powerup)
     {
         PowerupType powerupType = powerup.GetComponent<Powerup>().powerupType;
@@ -219,6 +225,8 @@ public class PlayerController : MonoBehaviour
         }
         yield return null;
     }
+
+    #endregion
 
     private IEnumerator BuyableObjectTrigger(Collider buyableObject)
     {
