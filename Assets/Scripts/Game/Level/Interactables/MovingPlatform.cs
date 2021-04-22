@@ -47,6 +47,8 @@ public class MovingPlatform : InteractableElement
 
     public Interpolation interpolation;
 
+    public GameObject objectToMove;
+
     /// <summary>
     /// Editor position
     /// </summary>
@@ -156,7 +158,7 @@ public class MovingPlatform : InteractableElement
     {
         float interpPos = GetInterpolationPoint(timePos);
         Vector3 spacePos = Vector3.Lerp(startPosition, endPosition, interpPos);
-        transform.position = spacePos;
+        objectToMove.transform.position = spacePos;
     }
 
 }

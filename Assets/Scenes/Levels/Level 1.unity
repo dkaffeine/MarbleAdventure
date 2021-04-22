@@ -417,8 +417,8 @@ Transform:
   - {fileID: 375538323}
   - {fileID: 85200267}
   - {fileID: 1938092066}
-  - {fileID: 1335540922}
   - {fileID: 1522384879}
+  - {fileID: 1335540922}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2904,6 +2904,11 @@ PrefabInstance:
         type: 3}
       propertyPath: startPosition.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633188718287261631, guid: 455c33bae29fdaf44ae3d032304d8d61,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4381235639609145552, guid: 455c33bae29fdaf44ae3d032304d8d61,
         type: 3}
