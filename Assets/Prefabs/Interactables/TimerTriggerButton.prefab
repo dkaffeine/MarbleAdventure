@@ -237,7 +237,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 25f8e8c7e890a4341b84f5af468a74e2, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -483,7 +483,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7483326580807590079}
-  m_Text: 'Timer: 0'
+  m_Text: 'Timer: 10'
   m_OffsetZ: 0
   m_CharacterSize: 0.25
   m_LineSpacing: 1
