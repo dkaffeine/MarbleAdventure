@@ -130,13 +130,15 @@ public class PlayerController : MonoBehaviour
                 switch(GameEngine.adventureData.powerup)
                 {
                     case PowerupType.Dash:
-                        playerRigidbody.AddForce(focalPoint.transform.forward * 30.0f, ForceMode.Impulse);
+                        playerRigidbody.AddForce(focalPoint.transform.forward * 35.0f, ForceMode.Impulse);
                         break;
                     case PowerupType.DoubleJump:
+                        // Reset the y-component of the velocity
+                        playerRigidbody.velocity = new Vector3(playerRigidbody.velocity.x, 0.0f, playerRigidbody.velocity.z);
                         playerRigidbody.AddForce(focalPoint.transform.up * 10.0f, ForceMode.Impulse);
                         break;
                     case PowerupType.Gravity:
-                        playerRigidbody.AddForce(focalPoint.transform.up * -10.0f, ForceMode.Impulse);
+                        playerRigidbody.AddForce(focalPoint.transform.up * -20.0f, ForceMode.Impulse);
                         break;
                     default:
                         // By default, there's no mid-air action
