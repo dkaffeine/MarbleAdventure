@@ -1,1 +1,8 @@
 Version 0.1
+
+* Initial commit
+* Created the game structure
+* Created the controls structure
+* 30 levels planned
+* Level 1 done, with exit to level 2
+* Level 2 halfway done, with exit to level 3
