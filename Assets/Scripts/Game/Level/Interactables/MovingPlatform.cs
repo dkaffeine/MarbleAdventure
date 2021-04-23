@@ -154,11 +154,14 @@ public class MovingPlatform : InteractableElement
         }
     }
 
-    public void UpdatePosition(float timePos)
+    public virtual void UpdatePosition(float timePos)
     {
         float interpPos = GetInterpolationPoint(timePos);
         Vector3 spacePos = Vector3.Lerp(startPosition, endPosition, interpPos);
-        objectToMove.transform.position = spacePos;
+        if (objectToMove != null)
+        {
+            objectToMove.transform.position = spacePos;
+        }
     }
 
 }
