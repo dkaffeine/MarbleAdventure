@@ -14,7 +14,7 @@ namespace Data
         /// <summary>
         /// Starting level
         /// </summary>
-        public uint level = 2;
+        public uint level = 0;
 
         /// <summary>
         /// Starting number of lives

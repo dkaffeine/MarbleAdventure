@@ -19,7 +19,7 @@ public class OptionsHandler : MonoBehaviour
     /// <summary>
     /// Method called on start, before the first frame
     /// </summary>
-    void Start()
+    void Awake()
     {
         LoadOptions();
     }

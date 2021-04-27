@@ -51,6 +51,15 @@ namespace Utils
                 SceneManager.UnloadSceneAsync(sceneName);
             }
         }
+
+        public static void Reload(string sceneName)
+        {
+            if (IsSceneLoaded(sceneName) == true)
+            {
+                SceneManager.LoadScene(sceneName);
+
+            }
+        }
     } // End of class
 } // End of namespace
 

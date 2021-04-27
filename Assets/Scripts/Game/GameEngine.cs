@@ -40,6 +40,8 @@ public class GameEngine : MonoBehaviour
     /// </summary>
     public static float interactableRotationSpeed = 180.0f;
 
+    public Fading fading;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -184,7 +186,7 @@ public class GameEngine : MonoBehaviour
 
         bool hasToLoadLevel = false;
 
-        if (adventureData.level >= 1 && adventureData.level <= 30)
+        if (adventureData.level <= 30)
         {
             levelInformation.levelName = "Level " + adventureData.level.ToString();
             hasToLoadLevel = true;
@@ -204,12 +206,16 @@ public class GameEngine : MonoBehaviour
 
         // Save game on level load
         SaveAdventure();
+
+        // Make the fade out for the fading
+        fading.FadeOut();
+
     }
 
     /// <summary>
-    /// Unload a level
+    /// Load a new level - this function can be set into a coroutine
     /// </summary>
-    public void UnloadLevel()
+    public IEnumerator LoadNewLevel()
     {
         // Check for the player (marked as clone since it has been instanciated by the Instanciate command)
         GameObject player = GameObject.Find("Player(Clone)");
@@ -220,24 +226,17 @@ public class GameEngine : MonoBehaviour
             Destroy(player);
         }
 
-        // Unload level
-        Utils.ExtraSceneManagement.Unload(levelInformation.levelName);
+        // Make the fade in for the fading
+        fading.FadeIn();
+
+        yield return new WaitForSeconds(fading.GetFadePeriod());
 
         // We remove lives displayed
         uIManagement.RemoveLivesDisplayed();
 
-    }
+        // Reload level
+        Utils.ExtraSceneManagement.Reload("Game");
 
-    /// <summary>
-    /// Load a new level - this function can be set into a coroutine
-    /// </summary>
-    public IEnumerator LoadNewLevel()
-    {
-        UnloadLevel();
-
-        yield return new WaitForSeconds(5.0f);
-
-        LoadLevel();
     }
     
     /// <summary>
@@ -253,16 +252,34 @@ public class GameEngine : MonoBehaviour
         }
         else
         {
-            GameOver();
+            StartCoroutine(GameOver());
         }
     }
 
-    public void GameOver()
+    public IEnumerator GameOver()
     {
 
         UnloadUI();
 
-        UnloadLevel();
+        // Check for the player (marked as clone since it has been instanciated by the Instanciate command)
+        GameObject player = GameObject.Find("Player(Clone)");
+
+        // If that player was set, destroy it
+        if (player != null)
+        {
+            Destroy(player);
+        }
+
+        // Make the fade in for the fading
+        fading.FadeIn();
+
+        yield return new WaitForSeconds(fading.GetFadePeriod());
+
+        // Unload level
+        Utils.ExtraSceneManagement.Unload(levelInformation.levelName);
+
+        // We remove lives displayed
+        uIManagement.RemoveLivesDisplayed();
 
         ResetGame();
 
@@ -278,7 +295,7 @@ public class GameEngine : MonoBehaviour
     public void ResetGame()
     {
         adventureData.lives = adventureData.livesMax;
-        adventureData.level = 1;
+        adventureData.level = 0;
         adventureData.money = 0;
         adventureData.powerup = PowerupType.None;
 

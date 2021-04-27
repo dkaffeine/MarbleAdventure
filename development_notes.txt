@@ -1,0 +1,2 @@
+Color texture for the ground: sienna - A0522D
+Color texture for the floor: springgreen - 00FF7F

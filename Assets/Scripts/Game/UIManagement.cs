@@ -57,7 +57,8 @@ public class UIManagement : MonoBehaviour
     /// Internal name for the hearts displayed on the UI
     /// </summary>
     readonly string heartName = "Heart Displayed";
-        /// <summary>
+    
+	/// <summary>
     /// Handler to the first heart placeholder
     /// </summary>
     public Image heartPlaceholder;
@@ -138,6 +139,8 @@ public class UIManagement : MonoBehaviour
             // Set image size
             Vector2 imageSize = new Vector2(heartSize, heartSize);
             image.rectTransform.sizeDelta = imageSize;
+
+			// Set image name
             image.name = heartName;
         }
     }
