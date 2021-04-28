@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977910f5af18a7d4d85b6c0d167657e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endLevel: {fileID: 0}
+  endLevel: {fileID: 2374903514780589523}
   levelToJump: 0
 --- !u!114 &2374903514780589523
 MonoBehaviour:

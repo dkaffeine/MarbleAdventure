@@ -382,9 +382,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ebe9d774fec62438b864914b4f4c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableActivated: 0
+  interactableActivated: 1
   interactableElement: {fileID: 0}
-  volumeSE: {fileID: 0}
+  volumeSE: {fileID: 5573771535029022104}
   newStatus: 1
 --- !u!114 &5573771535029022104
 MonoBehaviour:
