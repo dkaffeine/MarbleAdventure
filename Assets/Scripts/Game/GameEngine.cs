@@ -40,7 +40,7 @@ public class GameEngine : MonoBehaviour
     /// </summary>
     public static float interactableRotationSpeed = 180.0f;
 
-    public Fading fading;
+    public Utils.Fading fading;
 
     // Start is called before the first frame update
     void Start()

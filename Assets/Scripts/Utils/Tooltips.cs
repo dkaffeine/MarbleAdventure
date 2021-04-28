@@ -3,10 +3,20 @@ using UnityEngine.UI;
 
 namespace Utils
 {
-    public class Fading : MonoBehaviour
+    public class Tooltips : MonoBehaviour
     {
 
         public Image fadingImage;
+
+        public Text Line1;
+
+        public Text Line2;
+
+        public Text Line3;
+
+        public Text Line4;
+
+        public Text Line5;
 
         private Color fadingImageColor;
 
@@ -16,16 +26,17 @@ namespace Utils
 
         private float fadeTime;
 
-        private const float fadePeriod = 2.0f;
+        private const float fadePeriod = 0.2f;
 
-        void Awake()
+        private const float maximumFading = 0.25f;
+        
+        // Start is called before the first frame update
+        void Start()
         {
-            fadingImageColor = fadingImage.color;
-            fadeOut = false;
-            fadeIn = false;
-            fadeTime = fadingImageColor.a;
+
         }
 
+        // Update is called once per frame
         void Update()
         {
             if (fadeOut)
@@ -43,9 +54,9 @@ namespace Utils
             {
                 fadingImage.gameObject.SetActive(true);
                 fadeTime += Time.deltaTime / GetFadePeriod();
-                if (fadeTime >= 1f)
+                if (fadeTime >= GetFadeAmplitude())
                 {
-                    fadeTime = 1f;
+                    fadeTime = GetFadeAmplitude();
                     fadeIn = false;
                 }
             }
@@ -75,6 +86,10 @@ namespace Utils
             return fadePeriod;
         }
 
-
+        public float GetFadeAmplitude()
+        {
+            return maximumFading;
+        }
     }
 }
+

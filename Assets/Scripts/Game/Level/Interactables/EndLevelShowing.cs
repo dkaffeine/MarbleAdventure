@@ -13,7 +13,8 @@ public class EndLevelShowing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        endLevel.SetLevelToJump(levelToJump);
+        if (endLevel != null)
+            endLevel.SetLevelToJump(levelToJump);
         SetFlagText();
     }
 

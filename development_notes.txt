@@ -1,2 +1,3 @@
-Color texture for the ground: sienna - A0522D
-Color texture for the floor: springgreen - 00FF7F
+Color texture for the ground: sienna - A0522D / FF8348
+Color texture for the floor: springgreen - 00FF7F / 00BF5F
+Color texture: gold - FFD700 -- FFEF99

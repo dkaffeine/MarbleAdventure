@@ -14,7 +14,7 @@ public class EndLevel : MonoBehaviour
     }
 
     /// <summary>
-    /// Trigger function when an entity enters the collider box
+    /// Trigger function when an entity collides the box
     /// </summary>
     /// <param name="other">Entity collider</param>
     private void OnTriggerEnter(Collider other)
