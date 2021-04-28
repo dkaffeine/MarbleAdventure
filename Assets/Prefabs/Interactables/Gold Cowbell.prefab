@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1697356612575131541}
   - component: {fileID: 3235301138151422459}
   m_Layer: 0
-  m_Name: Gold Coin
+  m_Name: Gold Cowbell
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 25f8e8c7e890a4341b84f5af468a74e2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 12d198e9fc2623c4ab2cb4144c33915b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

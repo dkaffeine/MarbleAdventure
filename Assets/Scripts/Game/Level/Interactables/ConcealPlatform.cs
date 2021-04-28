@@ -17,7 +17,8 @@ public class ConcealPlatform : InteractableElement
 
     public void SetVisibility()
     {
-        innerPlatform.SetActive(interactableActivated);
+        if (innerPlatform != null)
+            innerPlatform.SetActive(interactableActivated);
     }
 
     // Update is called once per frame
