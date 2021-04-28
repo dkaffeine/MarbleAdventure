@@ -13,8 +13,6 @@ public class Powerup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        volumeSE = gameObject.GetComponent<VolumeSE>();
-
         ActivateIcon();
     }
 
@@ -38,9 +36,6 @@ public class Powerup : MonoBehaviour
                 gravityIcon.SetActive(true);
                 break;
             default:
-                dashIcon.SetActive(false);
-                doubleJumpIcon.SetActive(false);
-                gravityIcon.SetActive(false);
                 break;
         }
     }

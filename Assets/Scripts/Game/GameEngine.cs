@@ -70,6 +70,34 @@ public class GameEngine : MonoBehaviour
         }
 
         CheckPause();
+
+        CheckMoney();
+    }
+
+    private void CheckMoney()
+    {
+        if (adventureData.money >= 100 && adventureData.lives < adventureData.livesMax)
+        {
+            // Buy a life lost
+            adventureData.money -= 100;
+            adventureData.lives++;
+
+            // Reset lives displayed
+            uIManagement.RemoveLivesDisplayed();
+            uIManagement.DisplayLives();
+        }
+
+        if (adventureData.money >= 500 && adventureData.livesMax < 5)
+        {
+            // Buy a new life, up to 5
+            adventureData.money -= 500;
+            adventureData.livesMax++;
+            adventureData.lives++;
+
+            // Reset lives displayed
+            uIManagement.RemoveLivesDisplayed();
+            uIManagement.DisplayLives();
+        }
     }
 
     /// <summary>
@@ -294,10 +322,7 @@ public class GameEngine : MonoBehaviour
 
     public void ResetGame()
     {
-        adventureData.lives = adventureData.livesMax;
-        adventureData.level = 0;
-        adventureData.money = 0;
-        adventureData.powerup = PowerupType.None;
+        adventureData = new Data.Adventure();
 
         SaveAdventure();
     }

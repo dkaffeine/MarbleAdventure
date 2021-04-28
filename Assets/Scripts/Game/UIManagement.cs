@@ -150,7 +150,7 @@ public class UIManagement : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        moneyText.text = "Money: " + GameEngine.adventureData.money.ToString();
+        moneyText.text = "Cowbells: " + GameEngine.adventureData.money.ToString();
         levelText.text = "Level: " + GameEngine.adventureData.level.ToString();
     }
 
