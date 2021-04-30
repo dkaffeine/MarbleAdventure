@@ -719,22 +719,22 @@ PrefabInstance:
     - target: {fileID: 7890373526112599516, guid: 791d113e74c95044aa8c6c0e0fa31d4d,
         type: 3}
       propertyPath: Line1
-      value: On each level, you have to reach the
+      value: You have to complete the game by
       objectReference: {fileID: 0}
     - target: {fileID: 7890373526112599516, guid: 791d113e74c95044aa8c6c0e0fa31d4d,
         type: 3}
       propertyPath: Line2
-      value: goal, symbolized by a goal flag.
+      value: reaching the end of level 30 :)
       objectReference: {fileID: 0}
     - target: {fileID: 7890373526112599516, guid: 791d113e74c95044aa8c6c0e0fa31d4d,
         type: 3}
       propertyPath: Line4
-      value: Each goal flag has the level it will jump to.
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7890373526112599516, guid: 791d113e74c95044aa8c6c0e0fa31d4d,
         type: 3}
       propertyPath: Line5
-      value: 'Goal: reach the end of level 30 :)'
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 791d113e74c95044aa8c6c0e0fa31d4d, type: 3}
@@ -977,22 +977,22 @@ PrefabInstance:
     - target: {fileID: 7890373526112599516, guid: 791d113e74c95044aa8c6c0e0fa31d4d,
         type: 3}
       propertyPath: Line1
-      value: Trigger buttons are used to activate
+      value: This blue and yellow button is used for
       objectReference: {fileID: 0}
     - target: {fileID: 7890373526112599516, guid: 791d113e74c95044aa8c6c0e0fa31d4d,
         type: 3}
       propertyPath: Line2
-      value: various mechanisms.
+      value: mechanism triggering.
       objectReference: {fileID: 0}
     - target: {fileID: 7890373526112599516, guid: 791d113e74c95044aa8c6c0e0fa31d4d,
         type: 3}
       propertyPath: Line3
-      value: For example here the button will move
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7890373526112599516, guid: 791d113e74c95044aa8c6c0e0fa31d4d,
         type: 3}
       propertyPath: Line4
-      value: the platform.
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7890373526112599516, guid: 791d113e74c95044aa8c6c0e0fa31d4d,
         type: 3}
@@ -1537,12 +1537,12 @@ PrefabInstance:
     - target: {fileID: 7890373526112599516, guid: 791d113e74c95044aa8c6c0e0fa31d4d,
         type: 3}
       propertyPath: Line1
-      value: Touching the goal flag jumps you to
+      value: Self-explanatory :p
       objectReference: {fileID: 0}
     - target: {fileID: 7890373526112599516, guid: 791d113e74c95044aa8c6c0e0fa31d4d,
         type: 3}
       propertyPath: Line2
-      value: the designed level.
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 791d113e74c95044aa8c6c0e0fa31d4d, type: 3}
@@ -2696,12 +2696,12 @@ PrefabInstance:
     - target: {fileID: 7890373526112599516, guid: 791d113e74c95044aa8c6c0e0fa31d4d,
         type: 3}
       propertyPath: Line4
-      value: 100 cowbells can buy a life lost.
+      value: 100 cowbells autobuy a life lost.
       objectReference: {fileID: 0}
     - target: {fileID: 7890373526112599516, guid: 791d113e74c95044aa8c6c0e0fa31d4d,
         type: 3}
       propertyPath: Line5
-      value: 500 cowbells can buy an extra life.
+      value: 500 cowbells autobuy an extra life.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 791d113e74c95044aa8c6c0e0fa31d4d, type: 3}
