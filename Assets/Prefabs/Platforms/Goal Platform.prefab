@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977910f5af18a7d4d85b6c0d167657e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endLevel: {fileID: 4428012079053810107}
+  endLevel: {fileID: 7303653982841025290}
   levelToJump: 0
 --- !u!1001 &5021109720955088601
 PrefabInstance:
@@ -122,9 +122,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5021109720955088601}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4428012079053810107 stripped
+--- !u!114 &7303653982841025290 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8709369275953825634, guid: 805fc8e647c76d4449dbe00375f7b442,
+  m_CorrespondingSourceObject: {fileID: 2374903514780589523, guid: 805fc8e647c76d4449dbe00375f7b442,
     type: 3}
   m_PrefabInstance: {fileID: 5021109720955088601}
   m_PrefabAsset: {fileID: 0}
