@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class InteractableElement : MonoBehaviour
 {
-    /// <summary>
-    /// Flag for platform activator
-    /// </summary>
+    [Tooltip("Should this interactable be activated?")]
     public bool interactableActivated = false;
 
     // Start is called before the first frame update

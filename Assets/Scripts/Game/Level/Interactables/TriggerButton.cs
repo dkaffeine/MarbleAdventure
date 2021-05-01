@@ -5,12 +5,12 @@ using UnityEngine;
 public class TriggerButton : InteractableElement
 {
 
-    private static readonly float rotationDegreesPerSecond = 180.0f;
-
+    [Tooltip("The interactable element that will be triggered by this button")]
     public InteractableElement interactableElement;
 
     public VolumeSE volumeSE;
 
+    [Tooltip("The status of the associated interactable element")]
     public bool newStatus = true;
 
     // Start is called before the first frame update
@@ -21,7 +21,7 @@ public class TriggerButton : InteractableElement
     // Update is called once per frame
     void Update()
     {
-        Vector3 eulerAngles = new Vector3(0, rotationDegreesPerSecond * Time.deltaTime, 0);
+        Vector3 eulerAngles = new Vector3(0, GameEngine.interactableRotationSpeed * Time.deltaTime, 0);
 
         transform.Rotate(eulerAngles);
     }

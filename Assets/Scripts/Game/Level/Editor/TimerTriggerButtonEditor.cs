@@ -12,7 +12,7 @@ public class TimerTriggerButtonEditor : Editor
         using (EditorGUI.ChangeCheckScope changeCheck = new EditorGUI.ChangeCheckScope())
         {
             TimerTriggerButton triggerButton = target as TimerTriggerButton;
-            triggerButton.SetTimerText(triggerButton.timer);
+            triggerButton.SetTimerText(triggerButton.countDownTimer);
 
             if (triggerButton.interactableElement)
             {

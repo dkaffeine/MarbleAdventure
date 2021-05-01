@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,9 @@ public class TimerTriggerButton : InteractableElement
 
     public bool newStatus = true;
 
-    public float timer = 10.0f;
+    public float countDownTimer = 10.0f;
+
+    private float currentTimer = 0.0f;
 
     public TextMesh timerText;
 
@@ -26,7 +29,39 @@ public class TimerTriggerButton : InteractableElement
         Vector3 eulerAngles = new Vector3(0, GameEngine.interactableRotationSpeed * Time.deltaTime, 0);
 
         transform.Rotate(eulerAngles);
+
+        if(currentTimer != 0.0f)
+        {
+            // If the timer is running, run it
+            RunTriggeredTimer();
+        }
     }
+
+    private void RunTriggeredTimer()
+    {
+        currentTimer -= Time.deltaTime;
+
+        if (currentTimer <= 0.0f)
+        {
+            // If timer runs out
+            currentTimer = 0.0f;
+
+            SetNewStatus(false);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (currentTimer == 0.0f)
+        {
+            timerText.text = "";
+        }
+        else
+        {
+            SetTimerText(0.1f * Mathf.Round(10.0f * currentTimer));
+        }
+    }
+
 
     public void SetTimerText(float timeToDisplay)
     {
@@ -35,55 +70,37 @@ public class TimerTriggerButton : InteractableElement
 
     private void OnTriggerEnter(Collider other)
     {
-        if (interactableActivated && other.CompareTag("Player"))
+        if (interactableActivated && other.CompareTag("Player") && currentTimer == 0.0f)
         {
-            // If that trigger is actiaved and it collides the player, we activate the button
-            interactableActivated = false;
+            // If the player triggers the interactable and the timer is not running
+            currentTimer = countDownTimer;
+
             volumeSE.Play();
 
-
-            if (interactableElement && newStatus == true)
-            {
-                StartCoroutine(StartInteractionCoroutine());
-            }
-
-            if (interactableElement && newStatus == false)
-            {
-                StartCoroutine(StartUninteractionCoroutine());
-            }
-
+            SetNewStatus(true);
         }
     }
 
-    private IEnumerator StartInteractionCoroutine()
+    private void SetNewStatus(bool flag)
     {
-        Light light = GetComponentInChildren<Light>();
-        if (light)
+        if (interactableElement)
         {
-            light.enabled = true;
-        }
-        interactableElement.PerformInteraction();
-        yield return new WaitForSeconds(timer);
-        interactableElement.PerformUninteraction();
-        if (light)
-        {
-            light.enabled = false;
-        }
-    }
+            Light light = GetComponentInChildren<Light>();
+            // We trigger light below interactable
+            if (light)
+            {
+                light.enabled = flag;
+            }
 
-    private IEnumerator StartUninteractionCoroutine()
-    {
-        Light light = GetComponentInChildren<Light>();
-        if (light)
-        {
-            light.enabled = true;
-        }
-        interactableElement.PerformUninteraction();
-        yield return new WaitForSeconds(timer);
-        interactableElement.PerformInteraction();
-        if (light)
-        {
-            light.enabled = false;
+            // We trigger interactable
+            if (newStatus == flag)
+            {
+                interactableElement.PerformInteraction();
+            }
+            else
+            {
+                interactableElement.PerformUninteraction();
+            }
         }
     }
 
