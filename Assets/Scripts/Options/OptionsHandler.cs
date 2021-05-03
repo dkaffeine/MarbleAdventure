@@ -17,6 +17,21 @@ public class OptionsHandler : MonoBehaviour
     private static bool wasOptionsLoaded = false;
 
     /// <summary>
+    /// Architecture enumerator
+    /// </summary>
+    public enum Architecture
+    {
+        standalone,
+        mobile,
+        webGL
+    }
+
+    /// <summary>
+    /// Architecture
+    /// </summary>
+    public static Architecture architecture = Architecture.standalone;
+
+    /// <summary>
     /// Method called on start, before the first frame
     /// </summary>
     void Awake()
