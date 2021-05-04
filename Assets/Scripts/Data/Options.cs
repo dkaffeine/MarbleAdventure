@@ -13,5 +13,9 @@ namespace Data
 
         public OptionsHandler.Architecture architecture = OptionsHandler.Architecture.standalone;
 
+        public ScreenResolution screenResolution = new ScreenResolution();
+
+        public bool fullScreen = true;
+
     }
 }
