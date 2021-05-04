@@ -10,5 +10,8 @@ namespace Data
         public float soundVolume = 1.0f;
         public bool muteMusic = false;
         public bool muteSound = false;
+
+        public OptionsHandler.Architecture architecture = OptionsHandler.Architecture.standalone;
+
     }
 }

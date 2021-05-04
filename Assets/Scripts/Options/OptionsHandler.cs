@@ -27,11 +27,6 @@ public class OptionsHandler : MonoBehaviour
     }
 
     /// <summary>
-    /// Architecture
-    /// </summary>
-    public static Architecture architecture = Architecture.standalone;
-
-    /// <summary>
     /// Method called on start, before the first frame
     /// </summary>
     void Awake()
