@@ -11,8 +11,6 @@ namespace Data
         public bool muteMusic = false;
         public bool muteSound = false;
 
-        public OptionsHandler.Architecture architecture = OptionsHandler.Architecture.standalone;
-
         public ScreenResolution screenResolution = new ScreenResolution();
 
         public bool fullScreen = true;

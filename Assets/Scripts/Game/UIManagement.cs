@@ -44,24 +44,9 @@ public class UIManagement : MonoBehaviour
     #region Hearts displayed
 
     /// <summary>
-    /// Sprite for the empty heart container
+    /// Handler to the lives text
     /// </summary>
-    public Sprite heartContainerEmpty;
-
-    /// <summary>
-    /// Sprite for the full heart container
-    /// </summary>
-    public Sprite heartContainerFull;
-
-    /// <summary>
-    /// Internal name for the hearts displayed on the UI
-    /// </summary>
-    readonly string heartName = "Heart Displayed";
-    
-	/// <summary>
-    /// Handler to the first heart placeholder
-    /// </summary>
-    public Image heartPlaceholder;
+    public Text livesText;
 
     #endregion
 
@@ -95,54 +80,11 @@ public class UIManagement : MonoBehaviour
     #endregion
 
     /// <summary>
-    /// Removes lives displayed
-    /// </summary>
-    public void RemoveLivesDisplayed()
-    {
-        foreach (GameObject gameObj in FindObjectsOfType(typeof(GameObject)))
-        {
-            if (gameObj.name == heartName)
-            {
-                Destroy(gameObj);
-            }
-        }
-    }
-
-    /// <summary>
     /// Display lives
     /// </summary>
     public void DisplayLives()
     {
-        for (uint live = GameEngine.adventureData.livesMax; live >= 1; live--)
-        {
-            GameObject gameObject = new GameObject();
-            Image image = gameObject.AddComponent<Image>();
-            if (live <= GameEngine.adventureData.lives)
-            {
-                // The displayed live is a live the player has
-                image.sprite = heartContainerFull;
-            }
-            else
-            {
-                // The displayed live corresponds to one of the lives lost by the player
-                image.sprite = heartContainerEmpty;
-            }
-
-            // Set the image in the UI structure
-            image.GetComponent<RectTransform>().SetParent(uIPanel.gameObject.transform);
-
-            // Set image position
-            float heartSize = heartPlaceholder.rectTransform.sizeDelta.x;
-            Vector3 imagePosition = heartPlaceholder.rectTransform.position + new Vector3(0.625f * heartSize * (live - 1), 0);
-            image.rectTransform.position = imagePosition;
-
-            // Set image size
-            Vector2 imageSize = new Vector2(heartSize, heartSize);
-            image.rectTransform.sizeDelta = imageSize;
-
-			// Set image name
-            image.name = heartName;
-        }
+        livesText.text = "x" + GameEngine.adventureData.lives.ToString();
     }
 
     /// <summary>

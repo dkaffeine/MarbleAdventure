@@ -28,7 +28,17 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Sphere radius
     /// </summary>
-    private float playerSphereRadius = 0.5f;
+    private readonly float playerSphereRadius = 0.5f;
+
+    /// <summary>
+    /// Player drag coefficient
+    /// </summary>
+    private float playerDrag;
+
+    /// <summary>
+    /// Continuous velocity force
+    /// </summary>
+    private readonly float continuousVelocityForce = 600.0f;
 
     /// <summary>
     /// Gives the state being on ground
@@ -39,6 +49,16 @@ public class PlayerController : MonoBehaviour
     /// Gives the state being able to make an mid-air action
     /// </summary>
     private bool canMidAirAction = false;
+
+    private void Awake()
+    {
+
+        // Get rigidbody
+        playerRigidbody = GetComponent<Rigidbody>();
+
+        // Get drag coefficient
+        playerDrag = playerRigidbody.drag;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -52,9 +72,6 @@ public class PlayerController : MonoBehaviour
         // Get the focal point object, and resets that point to the original view (identity)
         focalPoint = GameObject.Find("FocalPoint");
         focalPoint.transform.rotation = Quaternion.identity;
-
-        // Get rigidbody
-        playerRigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -96,7 +113,7 @@ public class PlayerController : MonoBehaviour
         {
             // Update forward / backward force, depending on the vertical input
             float forwardInput = gameController.GetVerticalAxis();
-            playerRigidbody.AddForce(focalPoint.transform.forward * GameEngine.adventureData.velocityForce * Time.deltaTime * forwardInput);
+            playerRigidbody.AddForce(focalPoint.transform.forward * continuousVelocityForce * Time.deltaTime * forwardInput);
         }
 
         // Update left / right, depending on the horizontal input
@@ -122,7 +139,8 @@ public class PlayerController : MonoBehaviour
             if (isOnGround)
             {
                 isOnGround = false;
-                playerRigidbody.AddForce(focalPoint.transform.up * 10.0f, ForceMode.Impulse);
+                playerRigidbody.AddForce(focalPoint.transform.up * 8.0f, ForceMode.Impulse);
+                playerRigidbody.drag = 0f;
             }
             else if (canMidAirAction)
             {
@@ -130,12 +148,13 @@ public class PlayerController : MonoBehaviour
                 switch(GameEngine.adventureData.powerup)
                 {
                     case PowerupType.Dash:
-                        playerRigidbody.AddForce(focalPoint.transform.forward * 35.0f, ForceMode.Impulse);
+                        playerRigidbody.AddForce(focalPoint.transform.forward * 20.0f, ForceMode.Impulse);
                         break;
                     case PowerupType.DoubleJump:
                         // Reset the y-component of the velocity
                         playerRigidbody.velocity = new Vector3(playerRigidbody.velocity.x, 0.0f, playerRigidbody.velocity.z);
-                        playerRigidbody.AddForce(focalPoint.transform.up * 10.0f, ForceMode.Impulse);
+
+                        playerRigidbody.AddForce(focalPoint.transform.up * 8.0f, ForceMode.Impulse);
                         break;
                     case PowerupType.Gravity:
                         playerRigidbody.AddForce(focalPoint.transform.up * -20.0f, ForceMode.Impulse);
@@ -174,6 +193,7 @@ public class PlayerController : MonoBehaviour
         {
             isOnGround = true;
             canMidAirAction = true;
+            playerRigidbody.drag = playerDrag;
         }
     }
 
@@ -251,7 +271,6 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     GameEngine.adventureData.lives++;
-                    gameEngine.uIManagement.RemoveLivesDisplayed();
                     gameEngine.uIManagement.DisplayLives();
                     GameEngine.adventureData.money -= itemPrice;
                 }

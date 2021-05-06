@@ -27,6 +27,11 @@ public class OptionsHandler : MonoBehaviour
     }
 
     /// <summary>
+    /// Architecture
+    /// </summary>
+    public static Architecture architecture = Architecture.standalone;
+
+    /// <summary>
     /// Method called on start, before the first frame
     /// </summary>
     void Awake()
@@ -91,7 +96,7 @@ public class OptionsHandler : MonoBehaviour
         // We do not call the screen resolution feature 
         return;
 #else
-        if (options.architecture != Architecture.standalone)
+        if (architecture != Architecture.standalone)
         {
             // On WebGL or on Android, we do not use the set resolution feature
             return;
@@ -107,7 +112,10 @@ public class OptionsHandler : MonoBehaviour
     /// <returns>Returns the music value, as a float number between 0 and 1</returns>
     public static float GetMusicVolume()
     {
-        return options.musicVolume;
+        if (options != null)
+            return options.musicVolume;
+        else
+            return 1.0f;
     }
 
     /// <summary>
@@ -116,7 +124,10 @@ public class OptionsHandler : MonoBehaviour
     /// <returns>Returns the music status, as a boolean</returns>
     public static bool GetMusicMute()
     {
-        return options.muteMusic;
+        if (options != null)
+            return options.muteMusic;
+        else
+            return false;
     }
 
     /// <summary>
@@ -125,7 +136,10 @@ public class OptionsHandler : MonoBehaviour
     /// <returns>Returns the sound effect value, as a float number between 0 and 1</returns>
     public static float GetSoundVolume()
     {
-        return options.soundVolume;
+        if (options != null)
+            return options.soundVolume;
+        else
+            return 1.0f;
     }
 
     /// <summary>
@@ -134,7 +148,10 @@ public class OptionsHandler : MonoBehaviour
     /// <returns>Returns the sound effect status, as a boolean</returns>
     public static bool GetSoundMute()
     {
-        return options.muteSound;
+        if (options != null)
+            return options.muteSound;
+        else
+            return false;
     }
     
 }

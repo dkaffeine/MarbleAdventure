@@ -7,11 +7,6 @@ namespace Data
     public class Adventure
     {
         /// <summary>
-        /// Starting velocity force
-        /// </summary>
-        public float velocityForce = 700.0f;
-
-        /// <summary>
         /// Starting level
         /// </summary>
         public uint level = 0;

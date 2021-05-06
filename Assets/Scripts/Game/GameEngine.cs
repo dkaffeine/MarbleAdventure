@@ -83,7 +83,6 @@ public class GameEngine : MonoBehaviour
             adventureData.lives++;
 
             // Reset lives displayed
-            uIManagement.RemoveLivesDisplayed();
             uIManagement.DisplayLives();
         }
 
@@ -95,7 +94,6 @@ public class GameEngine : MonoBehaviour
             adventureData.lives++;
 
             // Reset lives displayed
-            uIManagement.RemoveLivesDisplayed();
             uIManagement.DisplayLives();
         }
     }
@@ -259,9 +257,6 @@ public class GameEngine : MonoBehaviour
 
         yield return new WaitForSeconds(fading.GetFadePeriod());
 
-        // We remove lives displayed
-        uIManagement.RemoveLivesDisplayed();
-
         // Reload level
         Utils.ExtraSceneManagement.Reload("Game");
 
@@ -305,9 +300,6 @@ public class GameEngine : MonoBehaviour
 
         // Unload level
         Utils.ExtraSceneManagement.Unload(levelInformation.levelName);
-
-        // We remove lives displayed
-        uIManagement.RemoveLivesDisplayed();
 
         ResetGame();
 
