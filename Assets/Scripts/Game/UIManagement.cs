@@ -79,6 +79,14 @@ public class UIManagement : MonoBehaviour
 
     #endregion
 
+    private void Awake()
+    {
+        if (OptionsHandler.architecture == OptionsHandler.Architecture.standalone)
+        {
+            //androidPanel.SetActive(false);
+        }
+    }
+
     /// <summary>
     /// Display lives
     /// </summary>

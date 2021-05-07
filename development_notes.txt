@@ -3,5 +3,3 @@ Color texture for the floor: springgreen - 00FF7F / 00BF5F
 Color texture: gold - FFD700 -- FFEF99
 Color texture: tunnel - CC6939
 Color texture: pipe - 007F3F
-
-TODO: refactor textures to not have seeing disturbance when we rotate prefabs

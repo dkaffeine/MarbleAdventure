@@ -7,7 +7,7 @@ namespace Data
     public class Adventure
     {
         /// <summary>
-        /// Starting level
+        /// Starting level - level 0 is the tutorial level
         /// </summary>
         public uint level = 0;
 
