@@ -8,3 +8,10 @@ Version 0.1
 * Level 2 halfway done, with exit to level 3
 
 Version 0.2
+
+* Updated ball physics
+* Game on PC platform is now fullscreen, 1920x1080 pixels
+* Assets have been entirely re-done
+* Tutorial level 0 added
+* Level 1 re-done, with exit to levels 2 and 3
+* Level 2 done, with exit to levels 3 and 4
