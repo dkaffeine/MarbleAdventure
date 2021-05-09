@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableActivated: 0
   rotationSpeed: 45
+  objectToRotate: {fileID: 0}
 --- !u!1001 &1409143074548240918
 PrefabInstance:
   m_ObjectHideFlags: 0

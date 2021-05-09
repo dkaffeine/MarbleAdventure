@@ -9,7 +9,20 @@ public class Tourniquet : InteractableElement
     /// Rotation speed
     /// </summary>
     public float rotationSpeed = 45.0f;
-    
+
+    /// <summary>
+    /// Object to rotate
+    /// </summary>
+    public GameObject objectToRotate;
+
+    private void Awake()
+    {
+        if (objectToRotate == null)
+        {
+            objectToRotate = gameObject;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +36,7 @@ public class Tourniquet : InteractableElement
         {
             Vector3 eulerAngles = new Vector3(0.0f, rotationSpeed * Time.deltaTime, 0.0f);
 
-            transform.Rotate(eulerAngles);
+            objectToRotate.transform.Rotate(eulerAngles);
         }
     }
 }

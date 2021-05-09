@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda9129e0898f4245bd6b190860e1a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 1082260601048624661}
 --- !u!114 &2223474860874425250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,7 +400,7 @@ MonoBehaviour:
   interactableElement: {fileID: 0}
   volumeSE: {fileID: 5573771535029022104}
   newStatus: 1
-  timer: 10
+  countDownTimer: 10
   timerText: {fileID: 285308827378315115}
 --- !u!1 &7483326580807590079
 GameObject:
