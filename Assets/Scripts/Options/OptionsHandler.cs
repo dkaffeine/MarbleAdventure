@@ -17,21 +17,6 @@ public class OptionsHandler : MonoBehaviour
     private static bool wasOptionsLoaded = false;
 
     /// <summary>
-    /// Architecture enumerator
-    /// </summary>
-    public enum Architecture
-    {
-        standalone,
-        mobile,
-        webGL
-    }
-
-    /// <summary>
-    /// Architecture
-    /// </summary>
-    public static Architecture architecture = Architecture.standalone;
-
-    /// <summary>
     /// Method called on start, before the first frame
     /// </summary>
     void Awake()
@@ -92,16 +77,7 @@ public class OptionsHandler : MonoBehaviour
     /// </summary>
     public static void SetResolution()
     {
-#if UNITY_EDITOR
-        // We do not call the screen resolution feature 
-        return;
-#else
-        if (architecture != Architecture.standalone)
-        {
-            // On WebGL or on Android, we do not use the set resolution feature
-            return;
-        }
-
+#if UNITY_STANDALONE
         options.screenResolution.SetResolution(options.fullScreen);
 #endif
     }

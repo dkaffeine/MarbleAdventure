@@ -81,10 +81,9 @@ public class UIManagement : MonoBehaviour
 
     private void Awake()
     {
-        if (OptionsHandler.architecture == OptionsHandler.Architecture.standalone)
-        {
-            //androidPanel.SetActive(false);
-        }
+#if UNITY_STANDALONE
+        //androidPanel.SetActive(false);
+#endif
     }
 
     /// <summary>
