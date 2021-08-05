@@ -1,5 +1,6 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine;
 
 namespace Utils
 {
@@ -17,9 +18,18 @@ namespace Utils
         public static void SaveData<T>(T data, string fileName)
         {
             BinaryFormatter binaryFormatter = new BinaryFormatter();
-            FileStream file = File.Create(fileName);
-            binaryFormatter.Serialize(file, data);
-            file.Close();
+            if (File.Exists(fileName))
+            {
+                FileStream file = File.Open(fileName, FileMode.Open);
+                binaryFormatter.Serialize(file, data);
+                file.Close();
+            }
+            else
+			{
+                FileStream file = File.Open(fileName, FileMode.CreateNew);
+                binaryFormatter.Serialize(file, data);
+                file.Close();
+            }
         }
 
         /// <summary>
