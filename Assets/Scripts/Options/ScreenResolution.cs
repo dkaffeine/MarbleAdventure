@@ -3,6 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Generic class that handles screen resolution
 /// </summary>
+[System.Serializable]
 public class ScreenResolution
 {
 
