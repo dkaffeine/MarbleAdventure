@@ -5,6 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameEngine : MonoBehaviour
 {
+	#region Fields
+	#region Constants
+	public static int MAX_LEVELS = 30;
+	#endregion Constants
+
+	#region Serialized
+	[SerializeField] private bool m_forceLevel = false;
+	[SerializeField, Range(0, 30)] private uint m_forceLevelId = 0;
+	#endregion Serialized
+	#endregion Fields
     /// <summary>
     /// Main menu scene name
     /// </summary>
@@ -209,6 +219,12 @@ public class GameEngine : MonoBehaviour
     /// </summary>
     public void LoadLevel()
     {
+#if UNITY_EDITOR
+		if (m_forceLevel == true)
+		{
+			adventureData.level = m_forceLevelId;
+		}
+#endif // UNITY_EDITOR
 
         bool hasToLoadLevel = false;
 

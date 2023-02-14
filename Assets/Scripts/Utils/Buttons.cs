@@ -1,14 +1,15 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
 namespace Utils
 {
+	#region Usings
+	using UnityEngine;
+	using UnityEngine.SceneManagement;
+	#endregion Usings
+
     /// <summary>
     /// Class that handles with generic buttons behaviours
     /// </summary>
     public class Buttons : MonoBehaviour
     {
-
         /// <summary>
         /// Main menu scene name
         /// </summary>
