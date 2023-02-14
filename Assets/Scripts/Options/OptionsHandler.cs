@@ -77,9 +77,6 @@ public class OptionsHandler : MonoBehaviour
     /// </summary>
     public static void SetResolution()
     {
-#if UNITY_STANDALONE
-        options.screenResolution.SetResolution(options.fullScreen);
-#endif
     }
 
     /// <summary>

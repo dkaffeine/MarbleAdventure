@@ -10,9 +10,6 @@ namespace Data
         public float soundVolume = 1.0f;
         public bool muteMusic = false;
         public bool muteSound = false;
-
-        public ScreenResolution screenResolution = new ScreenResolution();
-
         public bool fullScreen = true;
 
     }
