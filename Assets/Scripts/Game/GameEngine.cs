@@ -228,7 +228,7 @@ public class GameEngine : MonoBehaviour
 
         bool hasToLoadLevel = false;
 
-        if (adventureData.level <= 30)
+        if (adventureData.level <= MAX_LEVELS)
         {
             levelInformation.levelName = "Level " + adventureData.level.ToString();
             hasToLoadLevel = true;
